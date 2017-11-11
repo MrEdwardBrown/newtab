@@ -1,136 +1,159 @@
 <head>
-<!-- TODO: add input fields in overlay to change icons and hrefs  -->
+	<link href="https://fonts.googleapis.com/css?family=Coming+Soon" rel="stylesheet"> 
 	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" crossorigin="anonymous">
-	<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet"> 
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
 	<title>Startpage</title>
 </head>
 
 <body>
-
-	<div class="circle front-lg"><i class="fa fa-lightbulb-o"></i></div>
-	<div class="circle middle-lg"></div>
-	<div class="circle back-lg"></div>
-	<div id="stripe"></div>
 	
-	<div class="banner">
-		
-		<div class="date">
-			<h1 style="margin: 0; padding-top: 8px;" id="weekday"></h1>
-			<p style="margin: 0;" id="month-date"></p>
-		</div>
-		
-		<div class="icons">
-			<a href="http://soundcloud.com/"><i class="fa fa-soundcloud icon"></i></a>
-			<a href="http://twitter.com/"><i class="fa fa-twitter icon"></i></a>
-			<a href="http://reddit.com/"><i class="fa fa-reddit icon"></i></a>
-			<a href="http://github.com/"><i class="fa fa-github icon"></i></a>
-			<a href="http://codepen.io/"><i class="fa fa-codepen icon"></i></a>
-		</div>
-		
+	<div class="date">
+		<h1 id="weekday" style="text-transform: uppercase;"></h1>
+		<p style="text-transform: uppercase;"><span id="month"></span><span id="month-date"></span><span id="year"></span></p>
 	</div>	
+		
+	<input id="search-bar" type="text" placeholder="&#xF002;" style="font-family:Arial, FontAwesome" />
+	
+	<div class="container">
+		<div class="drawer">
+			<div class="first-row">
+				<a href="http://reddit.com/"><img src="https://i.imgur.com/bKyN1Jo.png" class="icons"></a>
+				<a href="http://amazon.ca/"><img src="https://i.imgur.com/Jibu0hD.png" class="icons"></a>
+				<a href="http://instagram.com/"><img src="https://i.imgur.com/IVRcYmm.png" class="icons"></a>
+				<a href="http://netflix.com/"><img src="https://i.imgur.com/henqOn6.png" class="icons"></a>
+				<a href="https://open.spotify.com/browse/featured"><img src="https://i.imgur.com/5xOBK3j.png" class="icons"></a>
+			</div>
+			
+			<div class="second-row">
+				<a href="https://www.theverge.com/"><img src="https://i.imgur.com/vblL2S1.png" class="icons"></a>
+				<a href="https://www.google.ca/search?q=weather+this+week&ie=utf-8&oe=utf-8&gws_rd=cr&dcr=0&ei=D13kWY2jLca_0wLX1IrAAQ"><img src="https://i.imgur.com/LPPUk1v.png" class="icons"></a>
+				<a href="http://facebook.com/"><img src="https://i.imgur.com/uo0TP4N.png" class="icons"></a>
+				<a href="https://mail.google.com"><img src="https://i.imgur.com/mXDJ9IV.png" class="icons"></a>
+				<a href="http://youtube.com/"><img src="https://i.imgur.com/BwUt4WK.png" class="icons"></a>
+			</div>
+		</div>
+	</div>
+	
 <style>
-	body {
-		margin: 0;
-	}
 	html {
-    	height: 100%;
-    	-webkit-background-size: cover;
-    	-moz-background-size: cover;
-    	-o-background-size: cover;
-    	background-size: cover;
-    	background: #D6587E;
-    	background-repeat:no-repeat;
-    	background: -webkit-linear-gradient( to left bottom, #4e4991, #da82b2);
-    	background: -moz-linear-gradient( to left bottom, #4e4991, #da82b2);
-    	background: -ms-linear-gradient( to left bottom, #4e4991, #da82b2);
-    	background: -o-linear-gradient( to left bottom, #4e4991, #da82b2);
-    	background: linear-gradient( to left bottom, #4e4991, #da82b2);
+		min-width: 320px;
+		margin: 0;
+		height: 100%;
+		background-color: #252a54;
+		background-image: url("https://i.imgur.com/PCHI3YM.png");
+    	height: 80%; 
+    	background-position: top left;
+		background-repeat: no-repeat;
+    	background-size: contain;
 	}
-	.fa-lightbulb-o {
-		z-index: 9999;
-		color: #a88db6;
-		font-size: 40px;
+	#search-bar {
+		margin: auto;
+    	width: 50%;
+    	border: 2px solid #ba175a;
+    	padding: 10px;
+		display: block;
+    	float: right;
+		background-color: rgba(0,0,0,0.3);
+		border-radius: 6px;
+		color: #ba175a;
 		position: absolute;
-		top: 31px;
-		left: 39px;
-	}
-	.front-lg {
-		width: 100px;
-		height: 100px;
-		background-color: white;
-		z-index: 999;
-		position: absolute;
-		left: calc(25% + 20px);
-		top: calc(25% + 20px);
-	}
-	.middle-lg {
-		width: 120px;
-		height: 120px;
-		background-color: rgba(255,255,255,0.5);
-		z-index: 99;
-		position: absolute;
-		left: calc(25% + 10px);
-		top: calc(25% + 10px);
-	}
-	.back-lg {
-		width: 140px;
-		height: 140px;
-		background-color: rgba(255,255,255,0.2);
-		z-index: 9;
-		position: absolute;
-		left: 25%;
-		top: 25%;
-		box-shadow: 0px 0px 60px -6px rgb(139,110,160);
-	}
-	.circle {
-		border-radius: 50%
-	}
-	#stripe {
-		height: calc(75% - 132px);
-		position: absolute;
-		top: calc(25% + 119px);
-		left: calc(25% + 65px);
-		border: 6px solid rgba(255,255,255);
-		z-index: 9;
-	}
-	.banner {
-		position:absolute;
-		bottom: 20%;
-		left: 0;
-		height: 80px;
-		width: 100%;
-		background-color: rgba(255,255,255,0.2);
+		top: 45%;
+		right: 10px;
+		font-size: 18px;
+		padding-left: 12px;
 	}
 	.date {
-		color: white;
-		text-align:center;
-		width: calc(25% + 65px);
+		font-family: 'Coming Soon', cursive;
+		text-align: center;
+		width: 50%;
+		float: right;
+	}
+	.date h1 {
+		font-size: 68px;
+		color: #ba175a;
 		margin: 0;
-		height: 80px;
-		font-family: 'Lato', sans-serif;
-		float: left;
+		padding-top: 0.5em;
+	}
+	.date p {
+		margin: 0;
+		color: #ba175a;
+	}
+	.container {
+		width: 100%;
+	}
+	.drawer {
+		min-height: 125px;
+		width: 40%;
+		border-top: 2px solid #ba175a;
+		border-left: 2px solid #ba175a;
+		border-right: 2px solid #ba175a;
+		border-top-left-radius: 6px;
+    	border-top-right-radius: 6px;
+		background: rgba(0,0,0,0.3);
+		text-align: center;
+		position: absolute;
+    	bottom: 0;
+		left: 31%;
+    	margin: 0 auto;
+	}
+	.first-row {
+		width: 100%;
 	}
 	.icons {
-		width: calc(75% - 76px);
-		height: 80px;
-		float: right;
-		text-align: center;
-		color: white;
-		font-size: 32px;
-		padding-top: 23px;
+		width: 50px;
+		padding: 14px;
 	}
-	.icons a {
-		color: white;
+	@media (max-width: 1015px) {
+		.icons {
+			width: 40px;
+			padding: 10px;
+		}
 	}
-	.icon {
-		padding-left: 5px;
-		padding-right: 5px;
+	@media (max-width: 790px) {
+		.drawer {
+			width: 90%;
+			left: 5%;
+		}
 	}
-</style>
-
+	@media (max-width: 742px) {
+		.drawer {
+			width: 90%;
+			left: 5%;
+		}
+		#search-bar {
+			width: 95%;
+			background-color: rgba(0,0,0,0.6);
+		}
+	}
+	@media (max-width: 700px) {
+		.date {
+			width: 100%;
+			background-color: rgba(0,0,0,0.6);
+			border-radius: 6px;
+			padding-bottom: 10px;
+		}
+		.date h1 {
+			padding-top: 0;
+		}
+		
+	}
+	@media (max-width: 1015px) {
+		.icons {
+			width: 40px;
+			padding: 6px;
+		}
+	}
+</style>	
 <script>
-$(document).ready(function(){
+$(document).ready(function() {
+// Search Bar Functionality
+  $("#search-bar").keypress(function(event) {
+	var searchQuery = $("#search-bar").val();
+    if ( event.which == 13 ) {
+      window.location.href = 'http://www.google.com/search?q=' + searchQuery;
+    }
+  }); // END Keypress Function
+	
 //Date Functionality
 var date = new Date();
 var weekdays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
@@ -146,17 +169,17 @@ switch (monthday) {
 	case 21: 
 	case 31:
     	var affix = "st";
-		$('#month-date').html(months[month] + " " + monthday + affix + ", " + (year+1900));
+		$('#month-date').html(months[month] + ", " + monthday + "<sup>" + affix + "</sup>");
     	break;
 	case 2: 
 	case 22:
     	var affix = "nd";
-		$('#month-date').html(months[month] + " " + monthday + affix + ", " + (year+1900));
+		$('#month-date').html(months[month] + ", " + monthday + "<sup>" + affix + "</sup>");
     	break;
 	case 3: 
 	case 23:
      	var affix = "rd";
-		$('#month-date').html(months[month] + " " + monthday + affix + ", " + (year+1900));
+		$('#month-date').html(months[month] + ", " + monthday + "<sup>" + affix + "</sup>");
    	break;
 	case 4: 
 	case 5: 
@@ -183,10 +206,9 @@ switch (monthday) {
 	case 29:
 	case 30:
    	var affix = "th";
-		$('#month-date').html(months[month] + " " + monthday + affix + ", " + (year+1900));
+		$('#month-date').html(months[month] + ", " + monthday + "<sup>" + affix + "</sup>, ");
 }
-	
+$('#year').html(year + 1900);
 }); // END Document Ready Function
 </script>
-
 </body>
